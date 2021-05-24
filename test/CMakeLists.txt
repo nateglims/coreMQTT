@@ -34,16 +34,6 @@ set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
 # Include filepaths for source and include.
 include( ${MODULE_ROOT_DIR}/mqttFilePaths.cmake )
 
-# Target for Coverity analysis that builds the library.
-add_library( coverity_analysis
-             ${MQTT_SOURCES}
-             ${MQTT_SERIALIZER_SOURCES} )
-
-# Build MQTT library target without custom config dependency.
-target_compile_definitions( coverity_analysis PUBLIC MQTT_DO_NOT_USE_CUSTOM_CONFIG=1 )
-
-# MQTT public include path.
-target_include_directories( coverity_analysis PUBLIC ${MQTT_INCLUDE_PUBLIC_DIRS} )
 
 #  ====================================  Test Configuration ========================================
 
